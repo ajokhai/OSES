@@ -1,0 +1,15 @@
+﻿============================== NHLContext ==============================
+
+Enable-Migrations -ContextTypeName NhlContext -MigrationsDirectory Migrations\NHL
+
+add-migration -ConfigurationTypeName OSES.Migrations.OSES.Configuration "InitialCreate"
+
+update-database -ConfigurationTypeName OSES.Migrations.OSES.Configuration
+
+============================= ApplicationDbContext ==========================
+
+Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\Identity
+
+add-migration -ConfigurationTypeName OSES.Migrations.Identity.Configuration "InitialIdentity"
+
+update-database -ConfigurationTypeName OSES.Migrations.Identity.Configuration

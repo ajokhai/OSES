@@ -1,0 +1,127 @@
+﻿@model IEnumerable<OSES.Models.OSES.Exeat>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (User.IsInRole("User"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Official
+            Exeat?
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            Departure
+            Date
+        </th>
+        <th>
+            Arrival
+            Date
+        </th>
+        <th>
+            Lastname
+        </th>
+        <th>
+            Student Matric.
+        </th>
+        <th>
+            Exeat
+            Duration
+        </th>
+        <th>
+            HOD's
+            Approval
+        </th>
+        <th>
+            DSA/V.C.'s
+            Approval
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.official)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arrive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.matric_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExeatType)
+            </td>
+            <td>
+                @if (User.IsInRole("User"))
+                {
+                    @Html.DisplayFor(modelItem => item.HODStatus)
+                }
+                else if (User.IsInRole("HOD") || User.IsInRole("Admin"))
+                {
+                    <div class="checkbox">
+                        @Html.EditorFor(modelItem => item.HODStatus)
+                        @Html.ValidationMessageFor(modelItem => item.HODStatus, "", new { @class = "text-danger" })
+                    </div>
+                }
+            </td>
+            <td>
+                @if (User.IsInRole("User") || User.IsInRole("HOD"))
+                {
+                    @Html.DisplayFor(modelItem => item.SAStatus)
+                }
+                else if (User.IsInRole("VC") || User.IsInRole("Admin"))
+                {
+                    <div class="checkbox">
+                        @Html.EditorFor(modelItem => item.SAStatus)
+                        @Html.ValidationMessageFor(modelItem => item.SAStatus, "", new { @class = "text-danger" })
+                    </div>
+                }
+            </td>
+            <td>
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                {
+                    @Html.ActionLink("Edit | ", "Edit", new { id = item.Id })
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Print" class="btn btn-default" />
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

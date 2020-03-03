@@ -1,0 +1,80 @@
+﻿@model OSES.Models.OSES.Exeat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Exeat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.official)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.official)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matric_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matric_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExeatType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExeatType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

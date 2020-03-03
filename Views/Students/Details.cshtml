@@ -1,0 +1,75 @@
+﻿@model OSES.Models.OSES.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Matriculation
+            Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matric_no)
+        </dd>
+
+        <dt>
+            Firstname
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+
+        <dt>
+            Lastname
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+
+        <dt>
+            Othername
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.othername)
+        </dd>
+
+        <dt>
+            Room Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.room_no)
+        </dd>
+
+        <dt>
+            Hall of Residence
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HallofReside)
+        </dd>
+
+        <dt>
+            Department
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programme)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.matric_no }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
